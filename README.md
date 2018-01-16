@@ -57,10 +57,10 @@ Document loading progress. Range [0, 1].
 #### @loaded
 Triggered when the document is loaded.
 
-#### @page-loaded <sup>Number<sup>
+#### @pageLoaded <sup>Number<sup>
 Triggered when a page is loaded.
 
-#### @num-pages <sup>Number<sup>
+#### @numPages <sup>Number<sup>
 The total number of pages of the pdf.
 
 #### @error <sup>Object<sup>
@@ -90,8 +90,8 @@ Triggered when an error occurred.
 		{{currentPage}} / {{pageCount}}
 		<pdf
 			src="https://cdn.mozilla.net/pdfjs/tracemonkey.pdf"
-			@num-pages="pageCount = $event"
-			@page-loaded="currentPage = $event"
+			@numPages="pageCount = $event"
+			@pageLoaded="currentPage = $event"
 		></pdf>
 	</div>
 </template>
@@ -235,7 +235,7 @@ export default {
 		<button @click="$refs.pdf.print()">print</button>
 		<div style="width: 50%">
 			<div v-if="loadedRatio > 0 && loadedRatio < 1" style="background-color: green; color: white; text-align: center" :style="{ width: loadedRatio * 100 + '%' }">{{ Math.floor(loadedRatio * 100) }}%</div>
-			<pdf v-if="show" ref="pdf" style="border: 1px solid red" :src="src" :page="page" :rotate="rotate" @password="password" @progress="loadedRatio = $event" @error="error" @num-pages="numPages = $event"></pdf>
+			<pdf v-if="show" ref="pdf" style="border: 1px solid red" :src="src" :page="page" :rotate="rotate" @password="password" @progress="loadedRatio = $event" @error="error" @numPages="numPages = $event"></pdf>
 		</div>
 	</div>
 </template>
